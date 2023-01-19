@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Formulário R.J.</title>
+</head>
+<body>
+    <div class="content"> <!--.content atalho pra criar div-->
+        <h1>Formulário 🤩</h1>
+        <form>
+            <div>
+                <input type="text" placeholder="Digite seu nome" class="inputs">
+                <span class="span">O nome deve ter no mínimo 3 caractéres</span>
+            </div>
+            <div>
+                <input type="email" placeholder="Digite seu e-mail" class="inputs">
+                <span class="span">Digite um e-mail válido</span>
+            </div>
+            <div>
+                <input type="password" placeholder="Senha" class="inputs">
+                <span class="span">Digite uma senha com no mínimo 8 caractéres</span>
+            </div>
+            <div>
+                <input type="password" placeholder="Repita sua Senha" class="inputs">
+                <span class="span">As senhas devem ser compatíveis</span>
+            </div>
+                <!--tag para criar area de comentários-->
+            <textarea class="inputs" name="descricao" id="descricao" cols="25" rows="10" placeholder="Fale um pouco sobre você..."></textarea>
+            <p>Sexo:</p>
+            <div class="box-select">
+                <div>
+                    <input type="radio" name="sexo" id="M" value="M">
+                    <label for="M">Masculino</label>
+                </div>
+                <div>
+                    <input type="radio" name="sexo" id="F" value="F">
+                    <label for="F">Feminino</label>
+                </div>
+                <div>
+                    <input type="radio" name="sexo" id="O" value="O">
+                    <label for="O">Outros</label>
+                </div><!--para selecionar mais de uma opção, mudar o name, name igual só pode escolher uma opção-->
+            </div>
+            <p>Quais suas experiências ?</p>
+            <div class="box-select">
+                <div>
+                    <input type="checkbox" name="experiencias" id="html" value="html">
+                    <label for="html">HTML</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="experiencias" id="css" value="css">
+                    <label for="css">CSS</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="experiencias" id="js" value="js">
+                    <label for="js">JavaScript</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="experiencias" id="php" value="php">
+                    <label for="js">PHP</label>
+                </div><!-- Esse type é para selecionar mais de uma opção em uma caixinha-->
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </body>
+    </html>
