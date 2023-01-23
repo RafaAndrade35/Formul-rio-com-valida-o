@@ -10,21 +10,21 @@
 <body>
     <div class="content"> <!--.content atalho pra criar div-->
         <h1>Formulário 🤩</h1>
-        <form>
+        <form id="form">
             <div>
-                <input type="text" placeholder="Digite seu nome" class="inputs">
+                <input type="text" placeholder="Digite seu nome" class="inputs required" oninput="nameValidate()"><!--required para puxar validação em js e oninput, para a função ser chamada sempre que digitar algo no input-->
                 <span class="span">O nome deve ter no mínimo 3 caractéres</span>
             </div>
             <div>
-                <input type="email" placeholder="Digite seu e-mail" class="inputs">
+                <input type="email" placeholder="Digite seu e-mail" class="inputs required">
                 <span class="span">Digite um e-mail válido</span>
             </div>
             <div>
-                <input type="password" placeholder="Senha" class="inputs">
+                <input type="password" placeholder="Senha" class="inputs required">
                 <span class="span">Digite uma senha com no mínimo 8 caractéres</span>
             </div>
             <div>
-                <input type="password" placeholder="Repita sua Senha" class="inputs">
+                <input type="password" placeholder="Repita sua Senha" class="inputs required">
                 <span class="span">As senhas devem ser compatíveis</span>
             </div>
                 <!--tag para criar area de comentários-->
@@ -66,4 +66,38 @@
             <button type="submit">Enviar</button>
         </form>
     </body>
+    <script>
+        const form = document.getElementById('form');
+        const campos = document.querySelectorAll('.required'); //seleciona todoso os campos com a classe .required, o ponto se refere a classe//
+        const spans = document.querySelectorAll('span');
+        const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i;
+
+        function setError(index){ //função para setar o erro//
+            campos[index].style.border = '1px solid #e63636';
+            spans[index].style.display = 'block';
+        }
+
+        function removeEror(index){//função para retirar o erro, em vermelho//
+            campos[index].style.border = ''
+            spans[index].style.display = 'none';
+        }
+
+        //validação do nome//
+        function nameValidate(){ 
+            if(campos[0].value.length < 3)
+            {
+                setError(0);
+             }
+            else
+            {
+                removeEror(0);
+            }
+
+
+            //validação do email//
+            function emailValidate(){
+                
+            }
+    }
+    </script>
     </html>
