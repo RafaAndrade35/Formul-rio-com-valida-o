@@ -16,15 +16,15 @@
                 <span class="span">O nome deve ter no mínimo 3 caractéres</span>
             </div>
             <div>
-                <input type="email" placeholder="Digite seu e-mail" class="inputs required">
+                <input type="email" placeholder="Digite seu e-mail" class="inputs required" oninput="emailValidate()">
                 <span class="span">Digite um e-mail válido</span>
             </div>
             <div>
-                <input type="password" placeholder="Senha" class="inputs required">
+                <input type="password" placeholder="Senha" class="inputs required" oninput="mainPasswordValidate()">
                 <span class="span">Digite uma senha com no mínimo 8 caractéres</span>
             </div>
             <div>
-                <input type="password" placeholder="Repita sua Senha" class="inputs required">
+                <input type="password" placeholder="Repita sua Senha" class="inputs required" oninput="comparePassword()">
                 <span class="span">As senhas devem ser compatíveis</span>
             </div>
                 <!--tag para criar area de comentários-->
@@ -70,7 +70,15 @@
         const form = document.getElementById('form');
         const campos = document.querySelectorAll('.required'); //seleciona todoso os campos com a classe .required, o ponto se refere a classe//
         const spans = document.querySelectorAll('span');
-        const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i;
+        const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            nameValidate();
+            emailValidate();
+            mainPasswordValidate();
+            comparePassword();
+        });
 
         function setError(index){ //função para setar o erro//
             campos[index].style.border = '1px solid #e63636';
@@ -92,12 +100,43 @@
             {
                 removeEror(0);
             }
-
+        }    
 
             //validação do email//
             function emailValidate(){
-                
-            }
+                if(!emailRegex.test(campos[1].value))//! simbolo de negação//
+                {
+                    setError(1);
+                }
+                else
+                {
+                    removeEror(1);
+                }        
+    }
+
+    //validação senha//
+    function mainPasswordValidate(){
+        if(campos[2].value.length < 8)
+        {
+            setError(2);
+        }
+        else
+        {
+            removeEror(2);
+            comparePassword();
+        }
+    }
+
+    //comparar senha//
+    function comparePassword(){
+        if(campos[2].value == campos[3].value && campos[3].value.length >= 8)
+        {
+            removeEror(3);
+        }
+        else
+        {
+            setError(3);
+        }
     }
     </script>
     </html>
